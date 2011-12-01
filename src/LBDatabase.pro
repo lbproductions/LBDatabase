@@ -3,6 +3,7 @@ TEMPLATE = lib
 CONFIG += staticlib
 QT += sql
 DEFINES *= QT_USE_QSTRINGBUILDER
+INCLUDEPATH += $$PWD/include
 
 HEADERS += \
     Core/taskscheduler.h \
@@ -33,4 +34,4 @@ SOURCES += \
     Gui/connectabletablewidgetitem.cpp \
     Models/tablemodel.cpp
 
-DESTDIR = ../lib
+DESTDIR = $$PWD/../lib

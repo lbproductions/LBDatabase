@@ -3,8 +3,8 @@
 
 #include <QAbstractTableModel>
 
-#include <LBDatabase/Core/row.h>
-#include <LBDatabase/Core/databaseattribute.h>
+#include "../Core/row.h"
+#include "../Core/databaseattribute.h"
 
 #include <QStringList>
 #include <QMimeData>

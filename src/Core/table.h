@@ -7,7 +7,7 @@
 #include "mappingattribute.h"
 #include "row.h"
 
-#include <LBDatabase/Models/tablemodel.h>
+#include "../Models/tablemodel.h"
 
 #include <QPointer>
 #include <QSqlQuery>

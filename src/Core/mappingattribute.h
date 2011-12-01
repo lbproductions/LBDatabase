@@ -3,7 +3,7 @@
 
 #include "attribute.h"
 
-#include <LBDatabase/Gui/connectabletablewidgetitem.h>
+#include "../Gui/connectabletablewidgetitem.h"
 
 #include <QDebug>
 #include <QVariant>

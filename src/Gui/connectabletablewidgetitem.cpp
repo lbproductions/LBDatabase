@@ -13,8 +13,6 @@ ConnectableTableWidgetItem::ConnectableTableWidgetItem() :
 void ConnectableTableWidgetItem::setText(const QString &text)
 {
     QTableWidgetItem::setText(text);
-    qDebug() << text;
-    qDebug() << this->text();
 }
 
 } // namespace Misc
