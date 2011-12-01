@@ -132,7 +132,7 @@ void AttributeFutureWatcher::connectTo(QLabel *label)
 {
     if(m_attribute->isCalculating())
     {
-	label->setText("Loading...");
+        label->setText("Loading...");
     }
     else
     {
@@ -146,7 +146,7 @@ void AttributeFutureWatcher::connectTo(QLineEdit *lineEdit)
 {
     if(m_attribute->isCalculating())
     {
-	lineEdit->setText("Loading...");
+        lineEdit->setText("Loading...");
     }
     else
     {

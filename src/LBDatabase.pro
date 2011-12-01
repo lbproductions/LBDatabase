@@ -18,7 +18,8 @@ HEADERS += \
     Core/singleton.h \
     Gui/connectabletablewidgetitem.h \
     Models/tablemodel.h \
-    LBDatabase.h
+    LBDatabase.h \
+    Core/relation.h
 
 SOURCES += \
     Core/taskscheduler.cpp \
@@ -32,6 +33,7 @@ SOURCES += \
     Core/attribute.cpp \
     Core/singleton.cpp \
     Gui/connectabletablewidgetitem.cpp \
-    Models/tablemodel.cpp
+    Models/tablemodel.cpp \
+    Core/relation.cpp
 
 DESTDIR = $$PWD/../lib

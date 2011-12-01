@@ -132,6 +132,8 @@ public:
       */
     virtual void insertRow(Row *row) = 0;
 
+    virtual Row* rowById(int id) = 0;
+
 signals:
     void rowInserted(::Database::Row* row);
 
@@ -227,7 +229,9 @@ public:
         Gibt die Row mit der ID \p id zurück, oder \c 0, falls die Row nicht in
         dieser Tabelle existiert.
       */
-    RowType* rowById(int id);
+    Row* rowById(int id);
+
+    RowType* castedRowById(int id);
 
     /*!
         Gibt alle Elemente dieser Tabelle zurück, die die SQL-Condition
@@ -619,7 +623,7 @@ QList<RowType*> Table<RowType>::rowsBySqlCondition(const QString &condition)
     // Rows hinzufügen
     while(select.next())
     {
-	list.insert(list.size(), rowById(select.value(0).toInt()));
+    list.insert(list.size(), castedRowById(select.value(0).toInt()));
     }
     select.finish();
 
@@ -627,10 +631,17 @@ QList<RowType*> Table<RowType>::rowsBySqlCondition(const QString &condition)
 }
 
 template<class RowType>
-RowType* Table<RowType>::rowById(int id)
+Row* Table<RowType>::rowById(int id)
 {
     return m_rows->value().value(id,0);
 }
+
+template<class RowType>
+RowType* Table<RowType>::castedRowById(int id)
+{
+    return static_cast<RowType*>(rowById(id));
+}
+
 
 template<class RowType>
 void Table<RowType>::insertRow(Row *row)

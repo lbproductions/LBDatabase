@@ -9,5 +9,6 @@
 #include <LBDatabase/Core/row.h>
 #include <LBDatabase/Core/table.h>
 #include <LBDatabase/Models/tablemodel.h>
+#include <LBDatabase/Core/relation.h>
 
 #endif // LBDATABASE_H
