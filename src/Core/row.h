@@ -4,8 +4,8 @@
 
 #include <QObject>
 #include "attribute.h"
-
 #include "database.h"
+
 
 #include <QPointer>
 #include <QSqlQuery>
@@ -24,6 +24,7 @@ namespace Database {
 
 class TableBase;
 class AttributeBase;
+class Relation;
 
 //! Repräsentiert eine Reihe in einer Tabelle.
 /*!
@@ -121,53 +122,11 @@ public:
     QList<Row*> childRows() const;
 
     /*!
-        Gibt das Gui::Details::DetailsWidget dieser Reihe zurück.
-
-        Das DetailsWidget ist der linke Teil des RowWidget, wird aber auch an
-        anderen Stellen verwendet (z.B. LeagueView)
-      */
-    virtual QWidget* detailsWidget();
-
-    /*!
         Gibt die Tabelle zurück, in der diese Reihe liegt.
       */
     TableBase *table() const;
 
-    /*!
-        Gibt das Gui::Details::RowWidget dieser Reihe zurück.
-
-        Das RowWidget wird zum Beispiel im im Hauptfenster angezeigt, wenn die
-        Reihe angeklickt wurde und kein SummaryWidget zur Verfüngung steht.
-
-        Es besteht standardmäßig aus links dem DetailsWidget und rechts dem
-        StatsWidget.
-      */
-    virtual QWidget* rowWidget();
-
-    /*!
-        Gibt das Gui::Details::RowWindow dieser Reihe zurück.
-
-        Das RowWindow wird angezeigt, wenn die Reihe doppelt geklickt wurde.
-
-        Es ist standardmäßig ein einfaches Fenster, welches das RowWidget
-        enthält.
-      */
-    virtual QWidget* rowWindow();
-
-    /*!
-        Gibt das Gui::Details::StatsWidget dieser Reihe zurück.
-
-        Es wird recht im RowWidget angezeigt.
-      */
-    virtual QWidget* statsWidget();
-
-    /*!
-        Gibt Gui::Details::SummaryWidget dieser Reihe zurück.
-
-        Es wird zum Beispiel im im Hauptfenster angezeigt, wenn die
-        Reihe angeklickt wurde.
-      */
-    virtual QWidget* summaryWidget();
+    void addRelation(Relation* relation);
 
 signals:
     /*!
@@ -240,6 +199,7 @@ protected:
     QHash<QString, AttributeBase* > m_attributes; //!< Alle Attribute der Row. Muss von Kindklassen befüllt werden.
     QList<AttributeBase*> m_databaseAttributes; //!< Alle Datenbankattribute
     QList<Row*> m_childRows; //!< Alle Rows, die logisch zu dieser Row gehören (z.B. Round gehört zu Game)
+    QList<Relation*> m_relations;
 
     friend class TableBase;
 };

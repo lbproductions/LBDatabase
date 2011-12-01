@@ -2,6 +2,7 @@
 
 #include "attribute.h"
 #include "table.h"
+#include "relation.h"
 
 namespace Database {
 
@@ -122,34 +123,14 @@ void Row::addChildRows(QList<Row *> rows)
     m_childRows.append(rows);
 }
 
-QWidget *Row::detailsWidget()
-{
-    return 0;
-}
-
-QWidget* Row::rowWidget()
-{
-    return 0;
-}
-
-QWidget* Row::rowWindow()
-{
-    return 0;
-}
-
-QWidget* Row::statsWidget()
-{
-    return 0;
-}
-
-QWidget* Row::summaryWidget()
-{
-    return 0;
-}
-
 TableBase *Row::table() const
 {
     return m_table;
+}
+
+void Row::addRelation(Relation* relation)
+{
+    m_relations.append(relation);
 }
 
 } // namespace Database
